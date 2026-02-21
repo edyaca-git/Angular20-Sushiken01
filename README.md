@@ -1,59 +1,59 @@
-# GastroRestoCloudWeb
+# GastroRestoCloudWeb 🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.16.
+**GastroRestoCloud** is a professional management solution for the gastronomic industry, designed to provide full control over restaurant operations. This project uses **Angular 20+** with a modern, high-performance tech stack.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🛠️ Technology Stack
 
-```bash
-ng serve
+- **Frontend:** [Angular 20+](https://angular.dev/)
+- **Styling:** [Tailwind CSS 4.x](https://tailwindcss.com/)
+- **Components:** [Angular Material 20+](https://material.angular.io/)
+- **Deployment:** [Vercel](https://vercel.com/)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (Latest LTS version recommended)
+- [Angular CLI](https://angular.dev/tools/cli)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo/GastroRestoCloudWeb.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd GastroRestoCloudWeb
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Development Server
+
+Run `npm run start` (or `ng serve`) for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+### Build
+
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## 📁 Project Structure
+
+```text
+src/
+├── app/
+│   ├── components/      # Reusable UI components
+│   ├── core/            # Services, guards, and interceptors
+│   ├── pages/           # Main view components (Auth, Dashboard, etc.)
+│   └── shared/          # Shared modules and utilities
+├── assets/              # Static files (images, fonts)
+└── styles.scss          # Global styles & Tailwind imports
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 📄 License
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is private and proprietary.
