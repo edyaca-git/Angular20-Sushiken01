@@ -1,0 +1,124 @@
+<mat-toolbar
+    class="backdrop-blur-md border-b border-primary-500/30 text-white !h-16 px-4 flex justify-between items-center shadow-lg z-50 relative"
+    style="background-color: color-mix(in srgb, var(--color-surface-900), transparent 10%)">
+    <!-- Left Side: Logo & Toggle -->
+    <div class="flex items-center gap-4">
+        <button mat-icon-button (click)="toggleSidenav.emit()" class="text-white/80 hover:text-white">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <div class="flex items-center gap-3 min-w-0">
+  <!-- Logo sin círculo -->
+  <img
+    src="assets/logo/Logo.png"
+    alt="Sushi Ken"
+    class="h-10 w-auto flex-shrink-0" />
+
+  <!-- Texto completo -->
+  <div class="flex flex-col min-w-0">
+    <span
+      class="text-lg font-bold tracking-tight
+             bg-gradient-to-r from-primary-300 to-secondary-300
+             bg-clip-text text-transparent whitespace-nowrap">
+      Sushi Ken
+    </span>
+
+    <span
+      class="text-[11px] text-purple-200 uppercase
+             tracking-widest whitespace-nowrap">
+      Enterprise Edition
+    </span>
+  </div>
+</div>
+    </div>
+
+    <!-- Center: Branch Info & Exchange Rates (Hidden on mobile) -->
+    <div class="hidden md:flex items-center gap-6 text-sm text-gray-300">
+        <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-primary-500/20">
+            <mat-icon class="text-xs !w-4 !h-4 leading-4 text-primary-400">store</mat-icon>
+            <span>{{ currentBranch() }}</span>
+        </div>
+
+        <!-- Exchange Rate Widget -->
+        <div
+            class="flex items-center gap-4 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+            <div class="flex items-center gap-1 text-xs font-mono font-bold">
+                <span class="text-white/60">USD</span>
+                <span class="text-emerald-500">$1</span>
+            </div>
+            <div class="h-3 w-px bg-white/10"></div>
+            <div class="flex items-center gap-3">
+                @for (rate of exchangeRates(); track rate.currency) {
+                <div class="flex items-center gap-1" [title]="'1 USD = ' + rate.rate + ' ' + rate.currency">
+                    <span class="grayscale opacity-75 hover:grayscale-0 hover:opacity-100 transition-all cursor-help">{{
+                        rate.flag }}</span>
+                    <span class="font-mono text-xs">{{ rate.symbol }}{{ rate.rate | number:'1.2-2' }}</span>
+                </div>
+                }
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10">
+            <mat-icon class="text-xs !w-4 !h-4 leading-4">schedule</mat-icon>
+            <span>{{ currentTime() | date:'medium':'UTC' }} UTC</span>
+        </div>
+    </div>
+
+    <!-- Right Side: User & Actions -->
+    <div class="flex items-center gap-2">
+        <!-- Theme Selector -->
+        <button mat-icon-button [matMenuTriggerFor]="themeMenu" class="text-gray-400 hover:text-white"
+            title="Change Theme">
+            <mat-icon>palette</mat-icon>
+        </button>
+        <mat-menu #themeMenu="matMenu" class="custom-menu">
+            <div class="px-4 py-2 border-b border-white/10 mb-1">
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Select Theme</span>
+            </div>
+            @for (theme of themes; track theme.id) {
+            <button mat-menu-item (click)="setTheme(theme.id)">
+                <div class="flex items-center gap-3">
+                    <div class="w-4 h-4 rounded-full border border-white/20"
+                        [style.background]="'linear-gradient(135deg, ' + theme.colors.primary + ' 50%, ' + theme.colors.secondary + ' 50%)'">
+                    </div>
+                    <span [class.font-bold]="activeTheme().id === theme.id">{{ theme.name }}</span>
+                </div>
+            </button>
+            }
+        </mat-menu>
+
+        <button mat-icon-button class="text-gray-400 hover:text-white">
+            <mat-icon>notifications</mat-icon>
+        </button>
+
+        <button mat-button [matMenuTriggerFor]="userMenu"
+            class="!px-2 !min-w-0 flex items-center gap-2 text-gray-200 hover:text-white hover:bg-white/5 rounded-lg">
+            <div
+                class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary-500 to-secondary-500 flex items-center justify-center text-xs font-bold shadow-lg border border-white/20">
+                {{ userInitial() }}
+            </div>
+            <span class="hidden sm:block text-sm font-medium max-w-[100px] truncate">{{ userName() }}</span>
+            <mat-icon class="icon-sm">arrow_drop_down</mat-icon>
+        </button>
+
+        <mat-menu #userMenu="matMenu" class="custom-menu">
+            <div class="px-4 py-3 border-b border-gray-100 dark:border-gray-700 mb-1">
+                <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ userName() }}</p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">{{ userRole() }}</p>
+            </div>
+            <button mat-menu-item>
+                <mat-icon>person</mat-icon>
+                <span>Profile</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>settings</mat-icon>
+                <span>Settings</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="logout.emit()">
+                <mat-icon class="text-red-500">logout</mat-icon>
+                <span class="text-red-500">Logout</span>
+            </button>
+        </mat-menu>
+    </div>
+</mat-toolbar>

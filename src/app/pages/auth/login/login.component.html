@@ -1,0 +1,61 @@
+<div class="bg-slate-900/50 backdrop-blur-xl border border-primary-500/20 p-8 rounded-2xl shadow-2xl w-full">
+    <div class="text-center mb-8">
+        <div
+            class="w-22 h-22 bg-gradient-to-tr from-primary-400 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+            <img src="assets/logo/Logo.png" alt="Sushi Ken" class="w-20 h-20 object-contain" />
+        </div>
+        <h1 class="text-2xl font-bold text-white mb-2">Welcome Back</h1>
+        <p class="text-gray-400">Sign in to GastroRestoCloud</p>
+    </div>
+
+    <form (submit)="onSubmit($event)" class="space-y-6">
+        <div class="space-y-4">
+            <!-- Username Field -->
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-1">Username</label>
+                <div class="relative">
+                    <mat-icon class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">person</mat-icon>
+                    <input type="text" [(ngModel)]="username" name="username" placeholder="admin" required
+                        class="w-full bg-slate-800/50 text-white rounded-lg pl-10 pr-4 py-3 border border-white/10 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all placeholder-gray-600">
+                </div>
+            </div>
+
+            <!-- Password Field -->
+            <div>
+                <label class="block text-sm font-medium text-gray-400 mb-1">Password</label>
+                <div class="relative">
+                    <mat-icon class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">lock</mat-icon>
+                    <input type="password" [(ngModel)]="password" name="password" placeholder="••••••" required
+                        class="w-full bg-slate-800/50 text-white rounded-lg pl-10 pr-4 py-3 border border-white/10 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all placeholder-gray-600">
+                </div>
+            </div>
+        </div>
+
+        @if (errorMessage()) {
+        <div class="p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm text-center">
+            {{ errorMessage() }}
+        </div>
+        }
+
+        <button type="submit" [disabled]="loading()"
+            class="w-full bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-medium py-3 rounded-lg shadow-lg hover:shadow-primary-500/25 transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed">
+            @if (loading()) {
+            <span class="inline-block animate-spin mr-2">⟳</span> Signing in...
+            } @else {
+            Sign In
+            }
+        </button>
+    </form>
+
+    <div class="mt-8 pt-6 border-t border-white/5">
+        <div class="text-xs text-center text-gray-500">
+            <p class="mb-2"><strong>Demo Credentials:</strong></p>
+            <div class="grid grid-cols-2 gap-2 text-left">
+                <span>admin / 123</span>
+                <span>manager / 123</span>
+                <span>user / 123</span>
+                <span>waiter / 123</span>
+            </div>
+        </div>
+    </div>
+</div>

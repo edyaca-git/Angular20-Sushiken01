@@ -1,0 +1,71 @@
+<div class="flex flex-col h-full border-r border-white/5 text-gray-300 w-64 transition-all duration-300"
+    style="background-color: var(--color-surface-900)">
+
+    <!-- Search/Filter Placeholder -->
+    <div class="p-4 border-b border-white/5">
+        <div class="relative">
+            <mat-icon class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">search</mat-icon>
+            <input type="text" placeholder="Search menu..."
+                class="w-full text-sm text-gray-300 rounded-lg pl-9 pr-3 py-2 border border-white/5 focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all placeholder-gray-600"
+                style="background-color: var(--color-surface-800)">
+        </div>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="flex-1 overflow-y-auto py-2 custom-scrollbar">
+        <mat-nav-list>
+            @for (item of menuItems(); track item.id) {
+            @if (item.children) {
+            <mat-expansion-panel class="mat-elevation-z0 bg-transparent nav-expansion" hideToggle>
+                <mat-expansion-panel-header class="!h-12 hover:bg-white/5 !px-4">
+                    <mat-panel-title class="flex items-center gap-3 text-sm font-medium text-gray-300">
+                        <mat-icon class="!w-5 !h-5 !text-[20px] text-gray-400">{{ item.icon }}</mat-icon>
+                        <span>{{ item.title }}</span>
+                    </mat-panel-title>
+                    <mat-panel-description class="!grow-0 !mr-0">
+                        <mat-icon
+                            class="!w-5 !h-5 !text-[20px] text-gray-600 transition-transform">expand_more</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <mat-nav-list class="!pt-0">
+                    @for (subItem of item.children; track subItem.id) {
+                    <a mat-list-item [routerLink]="subItem.route" routerLinkActive="active-link"
+                        class="!h-10 !rounded-r-full !mr-2 hover:bg-white/5 !pl-12 group transition-all">
+                        <span class="text-sm text-gray-400 group-hover:text-white transition-colors">{{ subItem.title
+                            }}</span>
+                    </a>
+                    }
+                </mat-nav-list>
+            </mat-expansion-panel>
+            } @else {
+            <a mat-list-item [routerLink]="item.route" routerLinkActive="active-link"
+                class="!h-12 !rounded-r-full !mr-2 hover:bg-white/5 !px-4 group transition-all">
+                <div class="flex items-center gap-3">
+                    <mat-icon
+                        class="!w-5 !h-5 !text-[20px] text-gray-400 group-hover:text-primary-400 transition-colors">{{
+                        item.icon }}</mat-icon>
+                    <span class="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">{{
+                        item.title }}</span>
+                </div>
+            </a>
+            }
+            }
+        </mat-nav-list>
+    </div>
+
+    <!-- Footer -->
+    <div class="p-4 border-t border-white/5">
+        <div class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 cursor-pointer transition-colors"
+            style="background-color: var(--color-surface-800)">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center"
+                style="background-color: var(--color-surface-900)">
+                <mat-icon class="icon-sm text-gray-400">help_outline</mat-icon>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-xs font-medium text-gray-300">Support</span>
+                <span class="text-[10px] text-gray-500">v1.2.9</span>
+            </div>
+        </div>
+    </div>
+</div>

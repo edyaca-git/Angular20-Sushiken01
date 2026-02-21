@@ -1,0 +1,20 @@
+<div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-7 gap-4 p-4">
+  @for (action of actions(); track action.label) {
+  <button (click)="action.action()"
+    class="flex flex-col items-center justify-center aspect-square w-full rounded-xl shadow-lg hover:scale-105 transition-all duration-300 group relative overflow-hidden"
+    [style.background-color]="action.color || 'var(--color-primary-500)'" [title]="action.tooltip">
+
+    <!-- Icon -->
+    <mat-icon
+      class="!text-[50px] !w-[50px] !h-[50px] mb-2 text-white drop-shadow-md leading-none flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">{{
+      action.icon }}</mat-icon>
+
+    <!-- Label -->
+    <span class="text-sm font-bold text-white uppercase tracking-wider drop-shadow-sm text-center leading-tight px-2">{{
+      action.label }}</span>
+
+    <!-- Ripple/Shine Effect Overlay -->
+    <div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+  </button>
+  }
+</div>
