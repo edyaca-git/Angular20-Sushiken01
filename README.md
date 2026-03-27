@@ -148,7 +148,7 @@ C:\Users\EdyAca>nvm list
        src/app/layouts/layout-routing.module.ts (puedes borrarlo si no lo necesitas por ahora)
 
 Proyecto GastroRestoCloudApi
-
+```
 
 
 # liga de mi netlify logeado con mi cuenta de github
