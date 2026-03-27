@@ -150,7 +150,10 @@ C:\Users\EdyAca>nvm list
 Proyecto GastroRestoCloudApi
 
 
-ruben.estrada@motivus.com
+
+**liga de mi netlify logeado con mi cuenta de github**
+https://app.netlify.com/teams/edyaca-git/projects
+
 
 
 
