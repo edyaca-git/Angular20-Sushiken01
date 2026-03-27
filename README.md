@@ -151,7 +151,7 @@ Proyecto GastroRestoCloudApi
 
 
 
-**liga de mi netlify logeado con mi cuenta de github**
+# liga de mi netlify logeado con mi cuenta de github
 https://app.netlify.com/teams/edyaca-git/projects
 
 
